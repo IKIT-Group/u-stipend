@@ -199,8 +199,26 @@ svg * {
     scroll-behavior: auto !important;
   }
 }
-body p {
-  color: red;
+@font-face {
+  font-family: "Coolvetica";
+  src: url("../fonts/Coolvetica-Regular.woff2") format(woff2);
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Onest";
+  src: url("../fonts/Onest-Regular.woff2") format(woff2);
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Onest";
+  src: url("../fonts/Onest-SemiBold.woff2") format(woff2);
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
 }
 
 /*# sourceMappingURL=main.css.map */
