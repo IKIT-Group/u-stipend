@@ -220,5 +220,93 @@ svg * {
   font-style: normal;
   font-display: swap;
 }
+:root {
+  --color-white: #FFFFFF;
+  --color-pumpkin: #FF6600;
+  --color-black: #222222;
+  --color-blue-dark: #1D346A;
+  --color-blue-sky: #D1E2FF;
+  --color-success: #D6F3E9;
+  --color-warning: #FCF0DB;
+  --color-danger: #FDE1E1;
+  --color-black-disabled: rgba(34, 34, 34, 0.60);
+  --shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.25);
+  --font-family-base: "Onest", sans-serif;
+  --font-family-accent: "Coolvetica", sans-serif;
+  --container-width: 100rem;
+  --container-padding-x: 1.875rem;
+  --transitiom-duration: 0.2s;
+}
+@media (width <= 90.06125rem) {
+  :root {
+    --container-width: 76.25rem;
+  }
+}
+
+.container {
+  max-width: calc(var(--container-width) + var(--container-padding-x) * 2);
+  margin-inline: auto;
+  padding-inline: var(--container-padding-x);
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  white-space: nowrap !important;
+  clip-path: inset(100%) !important;
+  clip: rect(0 0 0 0) !important;
+  overflow: hidden !important;
+}
+
+@media (width <= 47.99875rem) {
+  .hidden-mobile {
+    display: none !important;
+  }
+}
+
+@media (width > 47.99875rem) {
+  .visible-mobile {
+    display: none !important;
+  }
+}
+
+body {
+  font-family: var(--font-family-base);
+  line-height: 1.4;
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  font-family: var(--font-family-accent);
+  font-weight: 400;
+}
+
+a,
+button,
+label,
+input,
+textarea,
+select,
+svg * {
+  transition-duration: var(--transitiom-duration);
+}
+
+a[class] {
+  text-decoration: none;
+}
+
+:focus-visible {
+  outline: 0.125rem dashed;
+  outline-offset: 0.25rem;
+  transition-duration: 0 !important;
+}
 
 /*# sourceMappingURL=main.css.map */
