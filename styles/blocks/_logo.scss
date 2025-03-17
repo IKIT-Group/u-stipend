@@ -1,0 +1,8 @@
+@use '../helpers/' as *;
+
+.logo {
+  font-size: rem(48);
+  color: var(--color-pumpkin);
+  font-family: var(--font-family-accent);
+  font-weight: 400;
+}
