@@ -1,0 +1,33 @@
+@use '../helpers/' as *;
+
+.calculator {
+  background-color: var(--color-blue-dark);
+  padding-block: fluid(50, 30);
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    row-gap: fluid(60, 30);
+  }
+
+  &__title {
+    font-size: fluid(64, 40);
+    color: var(--color-white);
+  }
+
+  &__windows {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: rem(20);
+  }
+
+  &__result {
+    background-color: var(--color-white);
+    display: flex;
+    flex-direction: column;
+    row-gap: fluid(20, 10);
+    padding: fluid(30, 20) fluid(40, 30);
+    border-radius: rem(10);
+    color: var(--color-blue-dark);
+  }
+}

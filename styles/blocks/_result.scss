@@ -1,0 +1,99 @@
+@use '../helpers/' as *;
+
+.result {
+  padding: fluid(30, 20) fluid(40, 30);
+  line-height: 1.4;
+
+  &__titles {
+    display: grid;
+    align-items: center;
+    column-gap: fluid(50, 20);
+    grid-template-columns: 50% auto auto;
+  }
+
+  &__block {
+    &:not(:last-child) {
+      border-bottom: rem(2) solid var(--color-blue-dark);
+      padding-bottom: rem(20);
+    }
+  }
+
+  &__title {
+    font-weight: 600;
+    display: flex;
+    column-gap: rem(10);
+    align-items: center;
+    font-size: fluid(20, 16);
+
+    &--icon-info {
+      display: inline-flex;
+      color: var(--color-pumpkin);
+      cursor: pointer;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    row-gap: fluid(20, 10);
+  }
+
+  &__item {
+    display: grid;
+    border-radius: rem(15);
+    align-items: center;
+    justify-content: space-between;
+    grid-template-columns: repeat(4, 25%);
+    background-color: var(--color-background);
+    box-shadow: var(--shadow);
+    padding: rem(17) rem(20);
+  }
+
+  &__name {
+    grid-column: 1 / span 2;
+  }
+
+  &__amount,
+  &__status {
+    justify-self: center;
+  }
+
+  &__output {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: rem(15);
+  }
+
+  &__total {
+    display: flex;
+    column-gap: rem(10);
+    font-weight: 600;
+    font-size: fluid(20, 16);
+
+    &-amount {
+      background-color: var(--color-pumpkin);
+      color: var(--color-white);
+      padding-inline: rem(10);
+    }
+  }
+
+  &__note {
+    font-size: rem(14);
+    color: var(--color-black-disabled);
+  }
+
+  &__link {
+    color: var(--color-blue-dark);
+    font-size: rem(14);
+    text-decoration-line: underline !important;
+    text-decoration-thickness: 9%;
+    text-underline-offset: 25%;
+    transition-duration: var(--transitiom-duration);
+
+    &:hover {
+      color: var(--color-pumpkin);
+      
+    }
+  }
+}

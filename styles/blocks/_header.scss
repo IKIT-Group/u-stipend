@@ -7,8 +7,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-inline: rem(38);
-    padding-block: rem(27);
+    padding-inline: fluid(38, 19);
+    padding-block: fluid(27, 13);
+
+    @include mobile {
+      justify-content: flex-end;
+    }
   }
 
   &__overlay {
