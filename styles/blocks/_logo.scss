@@ -1,7 +1,7 @@
 @use '../helpers/' as *;
 
 .logo {
-  font-size: rem(48);
+  font-size: fluid(48, 30);
   color: var(--color-pumpkin);
   font-family: var(--font-family-accent);
   font-weight: 400;

@@ -7,11 +7,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-inline: fluid(38, 19);
+    column-gap: fluid(87, 10);
+    padding-inline: fluid(38, 10);
     padding-block: fluid(27, 13);
 
     @include mobile {
-      justify-content: flex-end;
+      justify-content: space-between;
     }
   }
 
@@ -28,7 +29,7 @@
       justify-content: center;
       row-gap: 3rem;
       padding: 1rem;
-      background-color: var(--color-black-disabled);
+      background-color: var(--color-blue-dark);
       transition-duration: var(--transition-duration);
 
       &:not(.is-active) {
@@ -50,18 +51,23 @@
     &-list {
       display: flex;
       align-items: center;
-      column-gap: rem(87);
+      column-gap: fluid(87, 10);
 
       @include mobile {
         flex-direction: column;
-        row-gap: 1rem;
+        row-gap: rem(36);
       }
     }
 
     &-link {
       color: var(--color-blue-dark);
-      font-size: rem(40);
+      font-size: fluid(40, 20);
       font-weight: 600;
+
+      @include mobile {
+        
+      color: var(--color-white);
+      }
 
       &:hover {
         color: var(--color-pumpkin);

@@ -1,0 +1,63 @@
+@use "../helpers/" as *;
+
+.documents {
+  background-color: var(--color-blue-sky);
+  color: var(--color-blue-dark);
+
+  &__inner {
+    padding-block: fluid(50, 30);
+  }
+
+  &__title {
+    font-size: fluid(64, 40);
+    letter-spacing: rem(1.92);
+  }
+
+  &__subtitles {
+    display: flex;
+    justify-content: space-between;
+    padding-inline: fluid(30, 15) fluid(124, 80);
+
+    h3 {
+      font-size: fluid(36, 20);
+      font-family: var(--font-family-base);
+      font-weight: 400;
+      letter-spacing: rem(1.08);
+      color: var(--color-total-black);
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    row-gap: fluid(30, 15);
+  }
+
+  &__item {
+    display: flex;
+    padding-block: fluid(44, 22);
+    padding-inline: fluid(30, 15) fluid(160, 100);
+    background-color: var(--color-background);
+    box-shadow: var(--shadow);
+    border-radius: rem(30);
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    row-gap: fluid(10, 6);
+
+    &-title {
+      font-size: fluid(36, 24);
+      font-weight: 600;
+      font-family: var(--font-family-base);
+    }
+
+    &-date {
+      color: var(--color-black-disabled);
+      font-size: fluid(24, 16);
+    }
+  }
+}

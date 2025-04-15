@@ -16,6 +16,8 @@
   }
 
   &.is-active {
+    color: var(--color-white);
+
     .burger-button__line {
       &:first-child {
         rotate: 45deg;

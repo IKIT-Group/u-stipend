@@ -1,5 +1,11 @@
 @use 'helpers' as *;
 
+html {
+  &.is-lock {
+    overflow: hidden;
+  }
+}
+
 body {
   font-family: var(--font-family-base);
   line-height: 1.4;
