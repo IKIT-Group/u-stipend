@@ -1,0 +1,41 @@
+@use "../helpers/" as *;
+
+.about {
+  color: var(--color-blue-dark);
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    row-gap: fluid(60, 30);
+    padding-block: fluid(50, 30);
+  }
+
+  &__title {
+    font-size: fluid(64, 40);
+    letter-spacing: rem(1.92);  
+  }
+
+  &__description {
+    font-size: fluid(36, 20);
+      font-family: var(--font-family-base);
+      letter-spacing: rem(1.08);
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;  
+    justify-content: center;
+    column-gap: rem(100);
+
+    @include laptop {
+      column-gap: rem(50);
+      row-gap: rem(20);
+      flex-wrap: wrap;
+    }
+
+    @include mobile {
+      flex-direction: column;
+      
+    }
+  }
+}

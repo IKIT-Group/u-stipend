@@ -16,7 +16,7 @@
   &__subtitles {
     display: flex;
     justify-content: space-between;
-    padding-inline: fluid(30, 15) fluid(124, 80);
+    padding-inline: fluid(30, 15) fluid(124, 60);
 
     h3 {
       font-size: fluid(36, 20);
@@ -36,7 +36,7 @@
   &__item {
     display: flex;
     padding-block: fluid(44, 22);
-    padding-inline: fluid(30, 15) fluid(160, 100);
+    padding-inline: fluid(30, 15) fluid(160, 70);
     background-color: var(--color-background);
     box-shadow: var(--shadow);
     border-radius: rem(30);
@@ -58,6 +58,15 @@
     &-date {
       color: var(--color-black-disabled);
       font-size: fluid(24, 16);
+    }
+  }
+
+  &__download {
+    @include tablet {
+      svg {
+        width: 80px;
+        height: 80px;
+      }
     }
   }
 }

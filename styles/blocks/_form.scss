@@ -43,7 +43,8 @@
 
     &--3-cols {
       display: flex;
-      column-gap: fluid(40, 25);
+      gap: fluid(40, 25);
+      flex-wrap: wrap;
     }
   }
 

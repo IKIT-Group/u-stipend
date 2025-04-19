@@ -19,6 +19,12 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     column-gap: rem(20);
+
+    @include middle {
+      display: flex;
+      row-gap: rem(20);
+      flex-direction: column;
+    }
   }
 
   &__result {
