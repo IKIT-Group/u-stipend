@@ -1,34 +1,48 @@
-@use '../helpers/' as *;
+@use "../helpers/" as *;
 
 .result {
-  padding: fluid(30, 20) fluid(40, 30);
+  padding: fluid(30, 20) fluid(40, 15);
   line-height: 1.4;
 
   &__titles {
     display: grid;
     align-items: center;
-    column-gap: fluid(50, 20);
+    column-gap: fluid(50, 10);
     grid-template-columns: 50% auto auto;
+
+    @include mobile {
+      grid-template-columns: repeat(3, auto);
+    }
   }
 
   &__block {
     &:not(:last-child) {
       border-bottom: rem(2) solid var(--color-blue-dark);
-      padding-bottom: rem(20);
+      padding-bottom: fluid(20, 10);
     }
   }
 
   &__title {
     font-weight: 600;
-    display: flex;
-    column-gap: rem(10);
     align-items: center;
-    font-size: fluid(20, 16);
+    font-size: fluid(20, 12);
 
     &--icon-info {
       display: inline-flex;
-      color: var(--color-pumpkin);
+      column-gap: rem(10);
       cursor: pointer;
+
+      @include mobile {
+        column-gap: rem(5);
+      }
+
+      svg {
+        color: var(--color-pumpkin);
+
+        @include mobile {
+          width: rem(16);
+        }
+      }
     }
   }
 
@@ -36,6 +50,28 @@
     display: flex;
     flex-direction: column;
     row-gap: fluid(20, 10);
+    max-height: rem(580);
+    padding-left: rem(3);
+    padding-right: rem(15);
+    overflow-y: auto;
+
+    @include tablet {
+      padding-left: rem(2);
+      padding-right: rem(8);
+    }
+
+    &::-webkit-scrollbar {
+      width: rem(5);
+
+      @include tablet {
+        width: rem(3);
+      }
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: rem(10);
+      background: var(--color-blue-dark);
+    }
   }
 
   &__item {
@@ -46,11 +82,39 @@
     grid-template-columns: repeat(4, 25%);
     background-color: var(--color-background);
     box-shadow: var(--shadow);
-    padding: rem(17) rem(20);
+    padding: fluid(17, 12) fluid(20, 10);
+
+    @include mobile {
+      justify-content: none;
+      column-gap: rem(1);
+    }
   }
 
   &__name {
     grid-column: 1 / span 2;
+    font-size: fluid(20, 10);
+  }
+
+  &__amount {
+    font-size: fluid(20, 10);
+  }
+
+  &__status {
+    line-height: 0;
+
+    svg {
+      --size: #{rem(56)};
+
+      @include square(var(--size));
+
+      @include tablet {
+        --size: #{rem(40)};
+      }
+
+      @include mobile {
+        --size: #{rem(30)};
+      }
+    }
   }
 
   &__amount,
@@ -67,9 +131,15 @@
 
   &__total {
     display: flex;
-    column-gap: rem(10);
+    column-gap: fluid(10, 5);
     font-weight: 600;
-    font-size: fluid(20, 16);
+    font-size: fluid(20, 14);
+
+    @include mobile-s {
+      flex-direction: column;
+      align-items: flex-start;
+      row-gap: rem(5);
+    }
 
     &-amount {
       background-color: var(--color-pumpkin);
@@ -93,7 +163,6 @@
 
     &:hover {
       color: var(--color-pumpkin);
-      
     }
   }
 }

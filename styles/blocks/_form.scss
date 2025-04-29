@@ -1,4 +1,4 @@
-@use '../helpers/' as *;
+@use "../helpers/" as *;
 
 .form {
   background-color: var(--color-background);
@@ -6,7 +6,7 @@
   flex-direction: column;
   align-items: center;
   row-gap: fluid(20, 10);
-  padding: fluid(30, 20) fluid(40, 30);
+  padding: fluid(30, 20) fluid(40, 15);
   border-radius: rem(10);
   color: var(--color-blue-dark);
 
@@ -37,14 +37,67 @@
 
   &__text {
     font-weight: 600;
+    font-size: fluid(20, 16);
   }
 
   &__group {
-
-    &--3-cols {
+    &--3-rows {
       display: flex;
-      gap: fluid(40, 25);
+      flex-direction: column;
+      column-gap: fluid(40, 25);
+      row-gap: rem(10);
       flex-wrap: wrap;
+    }
+  }
+
+  &__select {
+    appearance: none;
+    background: #d6e3ff;
+    color: #002f6c;
+    padding: rem(6) rem(40) rem(6) rem(12); // увеличил отступ справа
+    font-size: fluid(20, 16);
+    border-radius: rem(10);
+    border: none;
+    width: 100%;
+    cursor: pointer;
+
+    &-wrapper {
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: rem(12);
+        transform: translateY(-50%);
+        background: url("../../icons/arrow-dropdown.svg") no-repeat center;
+        background-size: contain;
+        width: rem(12);
+        height: rem(12);
+        pointer-events: none; // чтобы стрелка не мешала клику
+      }
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    column-gap: fluid(15, 10);
+  }
+
+  &__button {
+    border: none;
+    border-radius: rem(10);
+    background-color: var(--color-blue-sky);
+    padding: rem(6) rem(25);
+    color: var(--color-blue-dark);
+    font-size: fluid(20, 14);
+    line-height: 1.4;
+
+    &.is-active {
+      background-color: var(--color-blue-dark);
+      color: var(--color-background);
+      font-weight: 600;
+      cursor: default;
     }
   }
 
@@ -56,6 +109,7 @@
 
   &__label {
     font-weight: 600;
+    font-size: fluid(20, 16);
 
     &--star {
       color: var(--color-pumpkin);
@@ -73,5 +127,60 @@
     font-size: fluid(20, 16);
     font-weight: 600;
     justify-content: center;
+  }
+
+
+  &__checkbox {
+    display: inline-flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  column-gap: rem(10);
+  width: 100%;
+
+    @include laptop {
+      column-gap: rem(6);
+    }
+
+    @include hover {
+      color: var(--color-pumpkin);
+  
+      .form__checkbox-input {
+        border-color: var(--color-pumpkin);
+      }
+    }
+
+    &-input {
+      --size: #{rem(23)};
+
+      @include square(var(--size));
+      @include flex-center;
+
+      appearance: none;
+      margin: 0;
+      background-color: var(--color-blue-sky);
+      border-radius: rem(4);
+
+      @include laptop {
+        --size: #{rem(18)};
+      }
+
+      &:not(:checked) {
+        &::after {
+          @include hide;
+        }
+      }
+  
+      &::after {
+        content: '✔';
+        color: var(--color-blue-dark);
+        transition-duration: var(--transition-duration);
+      }
+    }
+
+    &-label {
+      font-size: fluid(20, 16);
+      font-weight: 600;
+    }
   }
 }
