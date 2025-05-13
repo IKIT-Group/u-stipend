@@ -1,8 +1,9 @@
-@use '../helpers/' as *;
+@use "../helpers/" as *;
 
 .calculator {
   background-color: var(--color-blue-dark);
-  padding-block: fluid(50, 30);
+  padding-bottom: fluid(200, 100);
+  padding-top: fluid(50, 30);
 
   &__inner {
     display: flex;

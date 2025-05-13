@@ -20,11 +20,15 @@
       border-bottom: rem(2) solid var(--color-blue-dark);
       padding-bottom: rem(20);
     }
+
+    @include mobile-s {
+      align-self: auto;
+    }
   }
 
   &__legend {
     margin-bottom: fluid(20, 10);
-    font-size: fluid(20, 16);
+    font-size: fluid(20, 12);
     font-weight: 600;
     background-color: var(--color-pumpkin);
     color: var(--color-white);
@@ -54,12 +58,16 @@
     appearance: none;
     background: #d6e3ff;
     color: #002f6c;
-    padding: rem(6) rem(40) rem(6) rem(12); // увеличил отступ справа
-    font-size: fluid(20, 16);
+    padding: rem(6) rem(35) rem(6) rem(12); // увеличил отступ справа
+    font-size: fluid(20, 12);
     border-radius: rem(10);
     border: none;
     width: 100%;
     cursor: pointer;
+
+    @include mobile-s {
+      width: 100%;
+    }
 
     &-wrapper {
       position: relative;
@@ -90,7 +98,7 @@
     background-color: var(--color-blue-sky);
     padding: rem(6) rem(25);
     color: var(--color-blue-dark);
-    font-size: fluid(20, 14);
+    font-size: fluid(20, 12);
     line-height: 1.4;
 
     &.is-active {
@@ -107,9 +115,25 @@
     row-gap: rem(5);
   }
 
+  &__input {
+    -webkit-appearance: none;
+    background: #d6e3ff;
+    color: #002f6c;
+    padding: rem(6) rem(40) rem(6) rem(12); // увеличил отступ справа
+    font-size: fluid(20, 16);
+    border-radius: rem(10);
+    border: none;
+    width: 100%;
+    cursor: pointer;
+
+    &::placeholder {
+      color: #002f6c;
+    }
+  }
+
   &__label {
     font-weight: 600;
-    font-size: fluid(20, 16);
+    font-size: fluid(20, 14);
 
     &--star {
       color: var(--color-pumpkin);
@@ -129,14 +153,13 @@
     justify-content: center;
   }
 
-
   &__checkbox {
     display: inline-flex;
-  align-items: center;
-  flex-direction: row-reverse;
-  justify-content: space-between;
-  column-gap: rem(10);
-  width: 100%;
+    align-items: center;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    column-gap: rem(10);
+    width: 100%;
 
     @include laptop {
       column-gap: rem(6);
@@ -144,7 +167,7 @@
 
     @include hover {
       color: var(--color-pumpkin);
-  
+
       .form__checkbox-input {
         border-color: var(--color-pumpkin);
       }
@@ -170,16 +193,16 @@
           @include hide;
         }
       }
-  
+
       &::after {
-        content: '✔';
+        content: "✔";
         color: var(--color-blue-dark);
         transition-duration: var(--transition-duration);
       }
     }
 
     &-label {
-      font-size: fluid(20, 16);
+      font-size: fluid(20, 10);
       font-weight: 600;
     }
   }

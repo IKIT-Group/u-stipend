@@ -5,7 +5,11 @@
   color: var(--color-blue-dark);
 
   &__inner {
-    padding-block: fluid(50, 30);
+    padding-bottom: fluid(200, 100);
+    padding-top: fluid(50, 30);
+    display: flex;
+    flex-direction: column;
+    row-gap: rem(60);
   }
 
   &__title {
@@ -16,10 +20,10 @@
   &__subtitles {
     display: flex;
     justify-content: space-between;
-    padding-inline: fluid(30, 15) fluid(124, 60);
+    padding-inline: fluid(30, 15) fluid(124, 20);
 
     h3 {
-      font-size: fluid(36, 20);
+      font-size: fluid(36, 14);
       font-family: var(--font-family-base);
       font-weight: 400;
       letter-spacing: rem(1.08);
@@ -36,7 +40,7 @@
   &__item {
     display: flex;
     padding-block: fluid(44, 22);
-    padding-inline: fluid(30, 15) fluid(160, 70);
+    padding-inline: fluid(30, 15) fluid(160, 10);
     background-color: var(--color-background);
     box-shadow: var(--shadow);
     border-radius: rem(30);
@@ -50,23 +54,21 @@
     row-gap: fluid(10, 6);
 
     &-title {
-      font-size: fluid(36, 24);
+      font-size: fluid(36, 16);
       font-weight: 600;
       font-family: var(--font-family-base);
     }
 
     &-date {
       color: var(--color-black-disabled);
-      font-size: fluid(24, 16);
+      font-size: fluid(24, 12);
     }
   }
 
   &__download {
-    @include tablet {
-      svg {
-        width: 80px;
-        height: 80px;
-      }
+    svg {
+      width: fluid(112, 40);
+      height: fluid(112, 40);
     }
   }
 }
