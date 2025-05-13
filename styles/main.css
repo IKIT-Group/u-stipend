@@ -843,15 +843,15 @@ a[class] {
 }
 .result__status--success {
   background-color: var(--color-success);
-  background-image: url("../../icons/success.svg");
+  background-image: url("../icons/success.svg");
 }
 .result__status--warning {
   background-color: var(--color-warning);
-  background-image: url("../../icons/warning.svg");
+  background-image: url("../icons/warning.svg");
 }
 .result__status--danger {
   background-color: var(--color-danger);
-  background-image: url("../../icons/danger.svg");
+  background-image: url("../icons/danger.svg");
 }
 .result__amount, .result__status {
   justify-self: center;

@@ -133,17 +133,17 @@
 
     &--success {
       background-color: var(--color-success);
-      background-image: url("../../icons/success.svg");
+      background-image: url("../icons/success.svg");
     }
 
     &--warning {
       background-color: var(--color-warning);
-      background-image: url("../../icons/warning.svg");
+      background-image: url("../icons/warning.svg");
     }
 
     &--danger {
       background-color: var(--color-danger);
-      background-image: url("../../icons/danger.svg");
+      background-image: url("../icons/danger.svg");
     }
   }
 
