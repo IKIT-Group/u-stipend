@@ -9,6 +9,11 @@
   padding: fluid(30, 20) fluid(40, 15);
   border-radius: rem(10);
   color: var(--color-blue-dark);
+  align-self: flex-start;
+
+  @include middle {
+    align-self: auto;
+  }
 
   &__section {
     display: flex;
@@ -119,8 +124,8 @@
     -webkit-appearance: none;
     background: #d6e3ff;
     color: #002f6c;
-    padding: rem(6) rem(40) rem(6) rem(12); // увеличил отступ справа
-    font-size: fluid(20, 16);
+    padding: rem(6) rem(30) rem(6) rem(12); // увеличил отступ справа
+    font-size: fluid(20, 12);
     border-radius: rem(10);
     border: none;
     width: 100%;

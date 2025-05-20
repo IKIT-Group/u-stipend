@@ -7,7 +7,11 @@
       content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
     />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>U-Stipend</title>
+    <title>U∙Stipend | Сервис для подсчета стипендии студентов СФУ</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png" />
+    <link rel="manifest" href="favicon/site.webmanifest" />
     <link rel="stylesheet" href="./styles/main.css" />
     <script src="./scripts/main.js" type="module" defer></script>
   </head>
@@ -23,7 +27,7 @@
                 <a href="#calculator" class="header__menu-link">Калькулятор</a>
               </li>
               <li class="header__menu-item">
-                <a href="/" class="header__menu-link">Помощь</a>
+                <a href="#help" class="header__menu-link">Помощь</a>
               </li>
               <li class="header__menu-item">
                 <a href="#documents" class="header__menu-link">Документы</a>
@@ -70,7 +74,11 @@
         </div>
       </section>
 
-      <section id="calculator" class="calculator" aria-labelledby="calculator-title">
+      <section
+        id="calculator"
+        class="calculator"
+        aria-labelledby="calculator-title"
+      >
         <div class="calculator__inner container">
           <h2 class="calculator__title" aria-label="calculator-title">
             Калькулятор стипендии
@@ -83,7 +91,7 @@
                 </legend>
                 <div class="form__group">
                   <div class="form__field">
-                    <label for="student" class="form__label"
+                    <label class="form__label"
                       >Кто вы?<span class="form__label--star">*</span></label
                     >
                     <div class="form__buttons">
@@ -107,7 +115,7 @@
                   </div>
                 </div>
 
-                <div class="form__group form__group--3-rows">
+                <div class="form__group form__group--3-rows" data-js-student-block>
                   <div class="form__field select__body">
                     <label for="course-number" class="form__label">
                       Номер курса<span class="form__label--star">*</span>
@@ -118,15 +126,15 @@
                         class="form__select"
                         name="course-number"
                       >
-                        <option selected disabled hidden>
+                        <option selected disabled hidden value="">
                           Выберите курс обучения
                         </option>
-                        <option>1 курс</option>
-                        <option>2 курс</option>
-                        <option>3 курс</option>
-                        <option>4 курс</option>
-                        <option>5 курс</option>
-                        <option>6 курс</option>
+                        <option value="1st course">1 курс</option>
+                        <option value="2nd course">2 курс</option>
+                        <option value="3rd course">3 курс</option>
+                        <option value="4th course">4 курс</option>
+                        <option value="5th course">5 курс</option>
+                        <option value="6th course">6 курс</option>
                       </select>
                     </div>
                   </div>
@@ -143,26 +151,34 @@
                         class="form__select"
                         name="direction"
                       >
-                        <option selected disabled hidden>
+                        <option selected disabled hidden value="">
                           Выберите направление подготовки
                         </option>
-                        <option>Прикладная математика</option>
-                        <option>Информатика и вычислительная техника</option>
-                        <option>Информационные системы и технологии</option>
-                        <option>Прикладная информатика</option>
-                        <option>Программная инженерия</option>
-                        <option>Информационная безопасность</option>
-                        <option value="специалитет">
-                          Компьютерная безопасность
-                        </option>
-                        <option value="специалитет">
-                          Информационная безопасность автоматизированных систем
+                        <!-- <option>01.03.04 Прикладная математика</option>
+                        <option>
+                          09.03.01 Информатика и вычислительная техника
                         </option>
                         <option>
-                          Автоматизация технологических процессов и производств
+                          09.03.02 Информационные системы и технологии
                         </option>
-                        <option>Системный анализ и управление</option>
-                        <option>Управление в технических системах</option>
+                        <option>09.03.03 Прикладная информатика</option>
+                        <option>09.03.04 Программная инженерия</option>
+                        <option>10.03.01 Информационная безопасность</option>
+                        <option value="специалитет">
+                          10.05.01 Компьютерная безопасность
+                        </option>
+                        <option value="специалитет">
+                          10.05.03 Информационная безопасность
+                          автоматизированных систем
+                        </option>
+                        <option>
+                          15.03.04 Автоматизация технологических процессов и
+                          производств
+                        </option>
+                        <option>27.03.03 Системный анализ и управление</option>
+                        <option>
+                          27.03.04 Управление в технических системах
+                        </option> -->
                       </select>
                     </div>
                   </div>
@@ -177,22 +193,31 @@
                         class="form__select"
                         name="basis-of-learning"
                       >
-                        <option selected disabled hidden>
+                        <option selected disabled hidden value="">
                           Выберите основу обучения
                         </option>
-                        <option>Бюджет</option>
-                        <option>Платно</option>
+                        <option value="budget">Бюджет</option>
+                        <option value="paying">Платно</option>
                       </select>
                     </div>
                   </div>
                 </div>
 
-                <div class="form__group form__group--3-rows visually-hidden">
+                <div class="form__group form__group--3-rows visually-hidden" data-js-applicant-block>
                   <div class="form__field select__body">
                     <label for="course-number" class="form__label">
-                      Сумма баллов за ЕГЭ<span class="form__label--star">*</span>
+                      Сумма баллов за ЕГЭ<span class="form__label--star"
+                        >*</span
+                      >
                     </label>
-                    <input min="0" max="300" type="number" class="form__input" id="amountOfPoints" placeholder="Укажите сумму баллов за 3 предмета">
+                    <input
+                      min="0"
+                      max="300"
+                      type="number"
+                      class="form__input"
+                      id="amountOfPoints"
+                      placeholder="Укажите сумму баллов за 3 предмета"
+                    />
                   </div>
 
                   <div class="form__field select__body">
@@ -251,8 +276,8 @@
                   </div>
                 </div>
               </fieldset>
-              
-              <fieldset class="form__section">
+
+              <fieldset class="form__section" data-js-student-evaluations>
                 <legend class="form__legend">
                   Укажите информацию за последнюю промежуточную аттестацию
                 </legend>
@@ -267,7 +292,7 @@
                         class="form__select"
                         name="evaluations"
                       >
-                        <option selected disabled hidden>
+                        <option selected disabled hidden value="">
                           Ваши оценки (зачеты, экзамены, защиты курсовых,
                           практик и т.д.)
                         </option>
@@ -282,7 +307,7 @@
                 </div>
               </fieldset>
 
-              <fieldset class="form__section">
+              <fieldset class="form__section" data-js-student-additionally>
                 <legend class="form__legend">
                   Укажите дополнительную информацию для расчета стипендии
                 </legend>
@@ -306,10 +331,24 @@
               </button>
             </form>
             <aside class="calculator__result result">
-              <div class="result__titles result__block">
+              <div
+                id="resultPlaceholder"
+                class="result__placeholder"
+                data-js-result-placeholder
+              >
+                Введите данные для получения информации...
+              </div>
+              <div
+                class="result__titles result__block visually-hidden"
+                data-js-result-titles
+              >
                 <p class="result__title">Вид стипендии</p>
                 <p class="result__title">Размер</p>
-                <p id="resultTitle" class="result__title result__title--icon-info">
+                <p
+                  id="resultTitle"
+                  class="result__title result__title--icon-info"
+                  data-js-result-title
+                >
                   Статус
                   <svg
                     width="26"
@@ -324,75 +363,98 @@
                     />
                   </svg>
                 </p>
-                <div id="resultPopup" class="result__popup visually-hidden">Привет! Я блок</div>
+                <div
+                  id="resultPopup"
+                  class="result__popup popup visually-hidden"
+                  data-js-result-popup
+                >
+                  <p class="popup__title">
+                    Статус показывает состояние получения стипендии, где:
+                  </p>
+                  <ul class="popup__list">
+                    <li class="popup__item">
+                      <img
+                        src="./icons/success_icon.svg"
+                        alt=""
+                        class="popup__image"
+                      />
+                      <p class="popup__text">гарантированное получение</p>
+                    </li>
+                    <li class="popup__item">
+                      <img
+                        src="./icons/warnin_icon.svg"
+                        alt=""
+                        class="popup__image"
+                      />
+                      <p class="popup__text">
+                        требуются дополнительные действия
+                      </p>
+                    </li>
+                    <li class="popup__item">
+                      <img
+                        src="./icons/danger_icon.svg"
+                        alt=""
+                        class="popup__image"
+                      />
+                      <p class="popup__text">получение невозможно</p>
+                    </li>
+                  </ul>
+                </div>
               </div>
-              <ul class="result__list result__block">
+              <ul
+                class="result__list result__block visually-hidden"
+                data-js-result-list
+              >
                 <li class="result__item">
                   <span class="result__name"
                     >Государственная Академическая Стипендия</span
                   >
                   <span class="result__amount">4400 ₽</span>
-                  <span class="result__status result__status--success">
-                    
-                  </span>
-                </li>
-                <li class="result__item">
-                  <span class="result__name">Повышенная Государственная Академическая стипендия</span>
-                  <span class="result__amount">4400 ₽</span>
-                  <span class="result__status result__status--warning">
-                    
-                  </span>
+                  <span class="result__status result__status--success"></span>
                 </li>
                 <li class="result__item">
                   <span class="result__name"
-                    >Социальная стипендия</span
+                    >Повышенная Государственная Академическая стипендия</span
                   >
                   <span class="result__amount">4400 ₽</span>
-                  <span class="result__status result__status--danger">
-                    
-                  </span>
+                  <span class="result__status result__status--warning"> </span>
                 </li>
                 <li class="result__item">
-                  <span class="result__name"
-                    >Краевая выплата</span
-                  >
+                  <span class="result__name">Социальная стипендия</span>
+                  <span class="result__amount">4400 ₽</span>
+                  <span class="result__status result__status--danger"> </span>
+                </li>
+                <li class="result__item">
+                  <span class="result__name">Краевая выплата</span>
                   <span class="result__amount">14400 ₽</span>
-                  <span class="result__status result__status--success">
-                    
-                  </span>
+                  <span class="result__status result__status--success"> </span>
                 </li>
                 <li class="result__item">
-                  <span class="result__name"
-                    >Стипендия Правительства РФ</span
-                  >
+                  <span class="result__name">Стипендия Правительства РФ</span>
                   <span class="result__amount">4400 ₽</span>
-                  <span class="result__status result__status--warning">
-                    
-                  </span>
+                  <span class="result__status result__status--warning"> </span>
                 </li>
                 <li class="result__item">
-                  <span class="result__name"
-                    >Стипендия Президента РФ</span
-                  >
+                  <span class="result__name">Стипендия Президента РФ</span>
                   <span class="result__amount">4400 ₽</span>
-                  <span class="result__status result__status--danger">
-                    
-                  </span>
+                  <span class="result__status result__status--danger"> </span>
                 </li>
                 <li class="result__item">
                   <span class="result__name"
                     >Стипендия для студентов платной основы от ППОС СФУ</span
                   >
                   <span class="result__amount">4400 ₽</span>
-                  <span class="result__status result__status--success">
-                    
-                  </span>
+                  <span class="result__status result__status--success"> </span>
                 </li>
-                
               </ul>
-              <div class="result__output result__block">
+              <div
+                class="result__output result__block visually-hidden"
+                data-js-result-output
+              >
                 <div class="result__total">
-                  <span class="result__total-text">Гарантированная сумма стипендии</span>
+                  <span class="result__total-text"
+                    >Гарантированная сумма стипендии</span
+                  >
                   <span class="result__total-amount">11.500 ₽</span>
                 </div>
 
@@ -400,7 +462,9 @@
                   Расчёты являются примерными и могут незначительно отличаться
                   от реальных.
                 </p>
-                <a href="#sources" class="result__link">Как происходит расчет?</a>
+                <a href="#sources" class="result__link"
+                  >Как происходит расчет?</a
+                >
               </div>
             </aside>
           </div>
@@ -423,7 +487,90 @@
         </div>
       </section>
 
-      <section id="documents" class="documents" aria-labelledby="documents-title">
+      <section class="help" id="help" aria-labelledby="help-title">
+        <div class="help__inner container">
+          <h2 class="help__title">Помощь</h2>
+          <div class="help__content">
+            <p class="help__description">
+              В данном разделе собраны инструкции в формате PDF - удобно
+              сохранить и поделиться с одногруппникми. Каждая из них призвана
+              решить ту или иную задачу по вопросу стипендии, которая часто
+              возникает у студентов Сибирского Федерального Университета.
+            </p>
+            <ul class="help__list">
+              <li class="help__item">
+                <a
+                  href="./documents/document.pdf"
+                  class="help__link"
+                  download=""
+                >
+                  <img
+                    class="help__link-image"
+                    src="./images/help/1.jpg"
+                    width="514"
+                    height="359"
+                    alt=""
+                  />
+                  <p
+                    class="help__link-overlay"
+                    title="Как оформить социальную стипендию?"
+                  >
+                    Как оформить социальную стипендию?
+                  </p>
+                </a>
+              </li>
+              <li class="help__item">
+                <a
+                  href="./documents/document.pdf"
+                  class="help__link"
+                  download=""
+                >
+                  <img
+                    class="help__link-image"
+                    src="./images/help/2.jpg"
+                    width="514"
+                    height="359"
+                    alt=""
+                  />
+                  <p
+                    class="help__link-overlay"
+                    title="Как оформить материальную помощь?"
+                  >
+                    Как оформить материальную помощь?
+                  </p>
+                </a>
+              </li>
+              <li class="help__item">
+                <a
+                  href="./documents/document.pdf"
+                  class="help__link"
+                  download=""
+                >
+                  <img
+                    class="help__link-image"
+                    src="./images/help/3.jpg"
+                    width="514"
+                    height="359"
+                    alt=""
+                  />
+                  <p
+                    class="help__link-overlay"
+                    title="Как оформить краевую стипендию?"
+                  >
+                    Как оформить краевую стипендию?
+                  </p>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="documents"
+        class="documents"
+        aria-labelledby="documents-title"
+      >
         <div class="documents__inner container">
           <h2 class="documents__title">Документы</h2>
           <div class="documents__subtitles visually-hidden">

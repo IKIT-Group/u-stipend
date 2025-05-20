@@ -1,0 +1,68 @@
+@use "../helpers/" as *;
+
+.help {
+  color: var(--color-blue-dark);
+
+  &__inner {
+    padding-bottom: fluid(200, 100);
+    padding-top: fluid(50, 30);
+    display: flex;
+    flex-direction: column;
+    row-gap: fluid(60, 20);
+  }
+
+  &__title {
+    font-size: fluid(64, 40);
+    letter-spacing: rem(1.92);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    row-gap: fluid(30, 15);
+  }
+
+  &__description {
+    font-size: fluid(36, 16);
+    letter-spacing: rem(1.08);
+  }
+
+  &__list {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(auto-fit, minmax(rem(250), 1fr));
+    gap: fluid(29, 10);
+  }
+
+  &__link {
+    position: relative;
+    width: 100%;
+
+    &-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: rem(25);
+    }
+
+    &-overlay {
+      position: absolute;
+      background: rgba(255, 102, 0, 0.8);
+      width: 100%;
+      bottom: 0;
+      padding-inline: fluid(25, 10);
+      padding-block: fluid(8, 5);
+      border-bottom-left-radius: rem(25);
+      border-bottom-right-radius: rem(25);
+      font-size: fluid(36, 14);
+      letter-spacing: rem(1.08);
+      font-weight: 600;
+      color: var(--color-white);
+      display: -webkit-box;
+      -webkit-line-clamp: 2; /* Количество строк */
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}

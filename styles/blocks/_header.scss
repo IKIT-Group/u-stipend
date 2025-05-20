@@ -51,7 +51,7 @@
     &-list {
       display: flex;
       align-items: center;
-      column-gap: fluid(87, 10);
+      column-gap: fluid(87, 5);
 
       @include mobile {
         flex-direction: column;
@@ -61,7 +61,7 @@
 
     &-link {
       color: var(--color-blue-dark);
-      font-size: fluid(40, 20);
+      font-size: fluid(40, 12);
       font-weight: 600;
 
       @include mobile {

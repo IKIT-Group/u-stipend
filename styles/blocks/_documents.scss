@@ -9,7 +9,7 @@
     padding-top: fluid(50, 30);
     display: flex;
     flex-direction: column;
-    row-gap: rem(60);
+    row-gap: fluid(60, 30);
   }
 
   &__title {

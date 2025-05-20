@@ -1,8 +1,17 @@
 @use "../helpers/" as *;
 
 .result {
-  padding: fluid(30, 20) fluid(40, 15);
+  padding: fluid(25, 20) fluid(40, 15);
   line-height: 1.4;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &__placeholder {
+    text-align: center;
+    font-size: fluid(36, 20);
+    font-weight: 600;
+  }
 
   &__titles {
     position: relative;
@@ -30,7 +39,7 @@
   &__popup {
     position: absolute;
     top: 100%;
-    left: 0;
+    right: rem(20);
     background: #f0f0f0;
     padding: 10px;
     border: 1px solid #ccc;
