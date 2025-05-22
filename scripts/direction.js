@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const courseSelect = document.getElementById("course-number");
   const directionSelect = document.getElementById("direction");
 
-  // Заполняем направления один раз при загрузке
+  
   directionsData.forEach((dir) => {
     const option = document.createElement("option");
     option.value = dir.name;
@@ -34,14 +34,13 @@ document.addEventListener("DOMContentLoaded", function () {
   courseSelect.addEventListener("change", () => {
     const courseNumber = parseInt(courseSelect.value);
 
-    // Проходим по каждому <option> в направлении
+    
     [...directionSelect.options].forEach((option) => {
       const maxCourse = parseInt(option.dataset.maxCourse);
-      if (isNaN(maxCourse)) return; // пропускаем плейсхолдер
+      if (isNaN(maxCourse)) return; 
       option.disabled = courseNumber > maxCourse;
     });
 
-    // Если выбранное направление стало недоступным, сбрасываем выбор
     if (
       directionSelect.selectedIndex > 0 &&
       directionSelect.options[directionSelect.selectedIndex].disabled
@@ -51,30 +50,4 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.querySelector(".calculator__form");
 
-  form.addEventListener("submit", (event) => {
-    event.preventDefault(); // предотвращаем отправку формы
-
-    // Остальные значения из select
-    const course = form.querySelector("#course-number")?.value;
-    const direction = form.querySelector("#direction")?.value;
-    const basis = form.querySelector("#basis-of-learning")?.value;
-    const evaluations = form.querySelector("#evaluations")?.value;
-
-    // Член профсоюза
-    const isInUnion = form.querySelector("#student-organization").checked;
-    if (course) {
-      console.log({
-        course,
-        direction,
-        basis,
-        evaluations,
-        isInUnion,
-      });
-    } else {
-      console.log('sadasd')
-    }
-  });
-});

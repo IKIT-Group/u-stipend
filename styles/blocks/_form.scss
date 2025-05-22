@@ -158,6 +158,12 @@
     justify-content: center;
   }
 
+  &__checkboxes {
+    display: flex;
+    flex-direction: column;
+    row-gap: rem(5);
+  }
+
   &__checkbox {
     display: inline-flex;
     align-items: center;

@@ -187,6 +187,25 @@
     }
   }
 
+  &__possible {
+    display: flex;
+    column-gap: fluid(10, 5);
+    font-weight: 600;
+    font-size: fluid(20, 14);
+
+    @include mobile-s {
+      flex-direction: column;
+      align-items: flex-start;
+      row-gap: rem(5);
+    }
+
+    &-amount {
+      background-color: var(--color-pumpkin);
+      color: var(--color-white);
+      padding-inline: rem(10);
+    }
+  }
+
   &__note {
     font-size: rem(14);
     color: var(--color-black-disabled);
