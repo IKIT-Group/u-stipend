@@ -1,7 +1,23 @@
-@use '../helpers/' as *;
+@use "../helpers/" as *;
 
 .header {
   letter-spacing: rem(2);
+
+  @include mobile {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    animation-name: scrolling-header;
+    animation-fill-mode: both;
+    animation-timeline: scroll();
+    animation-range: rem(100) rem(200);
+
+    @keyframes scrolling-header {
+      to {
+        box-shadow: 0 0 1rem 0 var(--color-total-black);
+      }
+    }
+  }
 
   &__inner {
     display: flex;
@@ -13,6 +29,7 @@
 
     @include mobile {
       justify-content: space-between;
+      background: var(--color-white);
     }
   }
 
@@ -61,12 +78,12 @@
 
     &-link {
       color: var(--color-blue-dark);
-      font-size: fluid(40, 12);
+      font-size: fluid(40, 11);
       font-weight: 600;
 
       @include mobile {
-        
-      color: var(--color-white);
+        font-size: fluid(40, 24);
+        color: var(--color-white);
       }
 
       &:hover {

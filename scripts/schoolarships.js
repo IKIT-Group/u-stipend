@@ -1,3 +1,5 @@
+import { clearInputs } from "./main.js";
+
 const SCHOLARSHIPS = [
   {
     name: "Государственная Академическая Стипендия",
@@ -260,16 +262,17 @@ document.addEventListener("DOMContentLoaded", () => {
           isOrphan,
         };
         updateScholarshipsResults(formData);
+        clearInputs(form)
       }
     } else if (applicantButton.classList.contains("is-active")) {
       if (amountOfPoints) {
-        // добавлена проверка
         const formData = {
           amountOfPoints,
           directionOfApplicant,
           basisOfLearningApplicant,
         };
         updateScholarshipsResults(formData);
+        clearInputs(form)
       }
     }
   });

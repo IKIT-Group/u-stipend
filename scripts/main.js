@@ -13,7 +13,7 @@ const outputElement = document.querySelector("[data-js-result-output]");
 const form = document.querySelector(".calculator__form");
 const placeholder = document.getElementById("resultPlaceholder");
 
-function clearInputs(container) {
+export function clearInputs(container) {
   const inputs = container.querySelectorAll("input, select, textarea");
   inputs.forEach((input) => {
     if (input.type === "checkbox" || input.type === "radio") {
@@ -44,18 +44,13 @@ const additionallyBlock = document.querySelector(
   "[data-js-student-additionally]"
 );
 
-/**
- * Короче внизу я написал костыльное решение, которое позволяет использовать атрибут reqired без заполнения полей
- * на других элементах формы для какого-то другого статуса
- */
-
 const courseNumberElement = document.getElementById("course-number");
 const directionElement = document.getElementById("direction");
 const basisOfLearningElement = document.getElementById("basis-of-learning");
 const evaluationsElement = document.getElementById("evaluations");
-const amountOfPointsElement = document.getElementById("amountOfPoints");
+const amountOfPointsElement = document.getElementById("amount-of-points");
 const directionOfApplicantElement = document.getElementById(
-  "directionOfApplicant"
+  "direction-of-applicant"
 );
 const basisOfLearningApplicantElement = document.getElementById(
   "basis-of-learning-applicant"
@@ -65,37 +60,34 @@ courseNumberElement.required = true;
 directionElement.required = true;
 basisOfLearningElement.required = true;
 evaluationsElement.required = true;
+amountOfPointsElement.required = false;
+directionOfApplicantElement.required = false;
+basisOfLearningApplicantElement.required = false;
 
 const resetResults = () => {
   titlesElement.classList.add("visually-hidden");
   listElement.classList.add("visually-hidden");
   outputElement.classList.add("visually-hidden");
   placeholder.style.display = "block";
-
-  // Очищаем все поля ввода в форме
   clearInputs(form);
-
-  // Сбрасываем форму
   form.reset();
 };
 
-const submitButton = document.querySelector("[data-js-submit-button]")
-
 applicantButton.addEventListener("click", () => {
+  courseNumberElement.required = false;
+  directionElement.required = false;
+  basisOfLearningElement.required = false;
+  evaluationsElement.required = false;
   applicantBlock.classList.remove("visually-hidden");
   studentBlock.classList.add("visually-hidden");
   evaluationsBlock.classList.add("visually-hidden");
   additionallyBlock.classList.add("visually-hidden");
   applicantButton.classList.add("is-active");
   studentButton.classList.remove("is-active");
-  courseNumberElement.required = false;
-  directionElement.required = false;
-  basisOfLearningElement.required = false;
-  evaluationsElement.required = false;
-  placeholder.textContent = "Введите данные для получения информации..."
-  // submitButton.style.cursor = "not-allowed";
-  // submitButton.style.opacity = "0.5";
-  // submitButton.disabled = true;
+  amountOfPointsElement.required = true;
+  directionOfApplicantElement.required = true;
+  basisOfLearningApplicantElement.required = true;
+  placeholder.textContent = "Введите данные для расчета стипендии..."
 
   resetResults();
 });
@@ -111,11 +103,10 @@ studentButton.addEventListener("click", () => {
   directionElement.required = true;
   basisOfLearningElement.required = true;
   evaluationsElement.required = true;
-
-  placeholder.textContent = "Введите данные для получения информации..."
-  // submitButton.style.cursor = "pointer";
-  // submitButton.style.opacity = "1";
-  // submitButton.disabled = false;
+  amountOfPointsElement.required = false;
+  directionOfApplicantElement.required = false;
+  basisOfLearningApplicantElement.required = false;
+  placeholder.textContent = "Введите данные для расчета стипендии..."
 
   resetResults();
 });
