@@ -27,7 +27,6 @@ function clearInputs(container) {
 document.addEventListener("DOMContentLoaded", function () {
   form.addEventListener("submit", function (e) {
     e.preventDefault();
-    placeholder.style.display = "none";
     titlesElement.classList.remove("visually-hidden");
     listElement.classList.remove("visually-hidden");
     outputElement.classList.remove("visually-hidden");
@@ -72,7 +71,15 @@ const resetResults = () => {
   listElement.classList.add("visually-hidden");
   outputElement.classList.add("visually-hidden");
   placeholder.style.display = "block";
+
+  // Очищаем все поля ввода в форме
+  clearInputs(form);
+
+  // Сбрасываем форму
+  form.reset();
 };
+
+const submitButton = document.querySelector("[data-js-submit-button]")
 
 applicantButton.addEventListener("click", () => {
   applicantBlock.classList.remove("visually-hidden");
@@ -85,9 +92,10 @@ applicantButton.addEventListener("click", () => {
   directionElement.required = false;
   basisOfLearningElement.required = false;
   evaluationsElement.required = false;
-  amountOfPointsElement.required = true;
-  directionOfApplicantElement.required = true;
-  basisOfLearningApplicantElement.required = true;
+  placeholder.textContent = "Данный раздел находится в разработке..."
+  submitButton.style.cursor = "not-allowed";
+  submitButton.style.opacity = "0.5";
+  submitButton.disabled = true;
 
   resetResults();
 });
@@ -103,9 +111,11 @@ studentButton.addEventListener("click", () => {
   directionElement.required = true;
   basisOfLearningElement.required = true;
   evaluationsElement.required = true;
-  amountOfPointsElement.required = false;
-  directionOfApplicantElement.required = false;
-  basisOfLearningApplicantElement.required = false;
+
+  placeholder.textContent = "Введите данные для получения информации..."
+  submitButton.style.cursor = "pointer";
+  submitButton.style.opacity = "1";
+  submitButton.disabled = false;
 
   resetResults();
 });

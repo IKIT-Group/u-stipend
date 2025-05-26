@@ -194,7 +194,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.querySelector(".calculator__form");
 
   form.addEventListener("submit", (event) => {
-    event.preventDefault(); 
+    const placeholder = document.getElementById("resultPlaceholder");
+    placeholder.textContent = ""
+    event.preventDefault();
 
     const course = parseInt(form.querySelector("#course-number")?.value, 10);
     const direction = form.querySelector("#direction")?.value;
