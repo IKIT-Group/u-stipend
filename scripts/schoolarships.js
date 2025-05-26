@@ -2,6 +2,9 @@ const SCHOLARSHIPS = [
   {
     name: "Государственная Академическая Стипендия",
     amountByEvaluation: {
+      "<=244": 3340,
+      "245-264": 12000,
+      "265-300": 12000,
       "Еще нет оценок": 3340,
       "Тройки или долги": 0,
       Четверки: 3340,
@@ -9,11 +12,15 @@ const SCHOLARSHIPS = [
       Пятерки: 5000,
     },
     key: "base",
-    condition: ({ basis }) => basis === "budget",
+    condition: ({ basis, basisOfLearningApplicant }) =>
+      basis === "budget" || basisOfLearningApplicant === "budget",
   },
   {
     name: "Повышенная Государственная Академическая стипендия",
     amountByEvaluation: {
+      "<=244": 0,
+      "245-264": 0,
+      "265-300": 0,
       "Еще нет оценок": 0,
       "Тройки или долги": 0,
       Четверки: 12800,
@@ -21,14 +28,19 @@ const SCHOLARSHIPS = [
       Пятерки: 14460,
     },
     key: "advanced",
-    condition: ({ basis }) => basis === "budget",
+    condition: ({ basis, basisOfLearningApplicant }) =>
+      basis === "budget" || basisOfLearningApplicant === "budget",
     needsDocuments: true,
   },
   {
     name: "Социальная стипендия",
     key: "social",
-    condition: ({ basis }) => basis === "budget",
+    condition: ({ basis, basisOfLearningApplicant }) =>
+      basis === "budget" || basisOfLearningApplicant === "budget",
     amountByEvaluation: {
+      "<=244": 4670,
+      "245-264": 4670,
+      "265-300": 4670,
       "Еще нет оценок": (formData) => (formData.isOrphan ? 7090 : 4670),
       "Тройки или долги": (formData) => (formData.isOrphan ? 7090 : 4670),
       Четверки: (formData) => (formData.isOrphan ? 13370 : 9520),
@@ -40,6 +52,9 @@ const SCHOLARSHIPS = [
   {
     name: "Краевая выплата",
     amountByEvaluation: {
+      "<=244": 0,
+      "245-264": (formData) => (formData.directionOfApplicant === "highpoints" ? 0 : 6000),
+      "265-300": 6000,
       "Еще нет оценок": 0,
       "Тройки или долги": 0,
       Четверки: 6000,
@@ -47,12 +62,15 @@ const SCHOLARSHIPS = [
       Пятерки: 6000,
     },
     key: "regional",
-    condition: ({ basis, course }) => basis === "budget" && course <= 2,
+    condition: ({ basis, basisOfLearningApplicant, course }) => basis === "budget" && course <= 2 || basisOfLearningApplicant === "budget",
     needsDocuments: true,
   },
   {
     name: "Стипендия Правительства РФ",
     amountByEvaluation: {
+      "<=244": 0,
+      "245-264": 0,
+      "265-300": 0,
       "Еще нет оценок": 0,
       "Тройки или долги": 0,
       Четверки: 7000,
@@ -62,13 +80,17 @@ const SCHOLARSHIPS = [
     key: "gov",
     condition: [
       ({ direction }) => !direction.includes("09.03.03 Прикладная информатика"),
-      ({ basis }) => basis === "budget",
+      ({ basis, basisOfLearningApplicant }) =>
+        basis === "budget" || basisOfLearningApplicant === "budget",
     ],
     needsDocuments: true,
   },
   {
     name: "Стипендия Президента РФ",
     amountByEvaluation: {
+      "<=244": 0,
+      "245-264": 0,
+      "265-300": 0,
       "Еще нет оценок": 0,
       "Тройки или долги": 0,
       Четверки: 10000,
@@ -78,7 +100,8 @@ const SCHOLARSHIPS = [
     key: "president",
     condition: [
       ({ direction }) => !direction.includes("09.03.03 Прикладная информатика"),
-      ({ basis }) => basis === "budget",
+      ({ basis, basisOfLearningApplicant }) =>
+        basis === "budget" || basisOfLearningApplicant === "budget",
     ],
     needsDocuments: true,
   },
@@ -86,7 +109,7 @@ const SCHOLARSHIPS = [
     name: "Стипендия для студентов платной основы от ППОС СФУ",
     amount: 1000,
     key: "ppos",
-    condition: ({ basis, isUnion }) => basis === "paying" && isUnion,
+    condition: ({ basis, basisOfLearningApplicant, isUnion }) => basis === "paying" && isUnion || basisOfLearningApplicant === "paying",
     needsDocuments: true,
   },
 ];
@@ -102,13 +125,20 @@ function updateScholarshipsResults(formData) {
   );
 
   const evaluationMap = {
+    "<=244": "<=244",
+    "245-264": "245-264",
+    "265-300": "265-300",
     "Еще нет оценок": "Еще нет оценок",
     "Тройки или академическая задолженность": "Тройки или долги",
     Четверки: "Четверки",
     "Четверки и пятерки": "Четверки и пятерки",
     Пятерки: "Пятерки",
   };
-  const evalKey = evaluationMap[formData.evaluations] || formData.evaluations;
+  const evalKey =
+    evaluationMap[formData.evaluations] ||
+    formData.evaluations ||
+    evaluationMap[formData.amountOfPoints] ||
+    formData.amountOfPoints;
 
   let guaranteedSum = 0;
   let possibleSum = 0;
@@ -192,10 +222,12 @@ function updateScholarshipsResults(formData) {
 
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.querySelector(".calculator__form");
+  const studentButton = form.querySelector("#student");
+  const applicantButton = form.querySelector("#applicant");
 
   form.addEventListener("submit", (event) => {
     const placeholder = document.getElementById("resultPlaceholder");
-    placeholder.textContent = ""
+    placeholder.textContent = "";
     event.preventDefault();
 
     const course = parseInt(form.querySelector("#course-number")?.value, 10);
@@ -205,19 +237,40 @@ document.addEventListener("DOMContentLoaded", () => {
     const isUnion = form.querySelector("#student-organization").checked;
     const isOrphan = form.querySelector("#student-orphan").checked;
 
-    if (course) {
-      const formData = {
-        course,
-        direction,
-        basis,
-        evaluations,
-        isUnion,
-        isOrphan,
-      };
-      console.log(formData);
-      updateScholarshipsResults(formData);
-    } else {
-      console.log("sadasd");
+    const amountOfPoints = form.querySelector("#amount-of-points").value;
+    const directionOfApplicant = form.querySelector(
+      "#direction-of-applicant"
+    ).value;
+    const basisOfLearningApplicant = form.querySelector(
+      "#basis-of-learning-applicant"
+    ).value;
+
+    console.log(amountOfPoints);
+    console.log(directionOfApplicant);
+    console.log(basisOfLearningApplicant);
+
+    if (studentButton.classList.contains("is-active")) {
+      if (course) {
+        const formData = {
+          course,
+          direction,
+          basis,
+          evaluations,
+          isUnion,
+          isOrphan,
+        };
+        updateScholarshipsResults(formData);
+      }
+    } else if (applicantButton.classList.contains("is-active")) {
+      if (amountOfPoints) {
+        // добавлена проверка
+        const formData = {
+          amountOfPoints,
+          directionOfApplicant,
+          basisOfLearningApplicant,
+        };
+        updateScholarshipsResults(formData);
+      }
     }
   });
 });

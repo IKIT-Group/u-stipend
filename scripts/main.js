@@ -92,10 +92,10 @@ applicantButton.addEventListener("click", () => {
   directionElement.required = false;
   basisOfLearningElement.required = false;
   evaluationsElement.required = false;
-  placeholder.textContent = "Данный раздел находится в разработке..."
-  submitButton.style.cursor = "not-allowed";
-  submitButton.style.opacity = "0.5";
-  submitButton.disabled = true;
+  placeholder.textContent = "Введите данные для получения информации..."
+  // submitButton.style.cursor = "not-allowed";
+  // submitButton.style.opacity = "0.5";
+  // submitButton.disabled = true;
 
   resetResults();
 });
@@ -113,9 +113,9 @@ studentButton.addEventListener("click", () => {
   evaluationsElement.required = true;
 
   placeholder.textContent = "Введите данные для получения информации..."
-  submitButton.style.cursor = "pointer";
-  submitButton.style.opacity = "1";
-  submitButton.disabled = false;
+  // submitButton.style.cursor = "pointer";
+  // submitButton.style.opacity = "1";
+  // submitButton.disabled = false;
 
   resetResults();
 });

@@ -22,7 +22,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const courseSelect = document.getElementById("course-number");
   const directionSelect = document.getElementById("direction");
 
-  
   directionsData.forEach((dir) => {
     const option = document.createElement("option");
     option.value = dir.name;
