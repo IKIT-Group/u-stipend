@@ -1067,6 +1067,9 @@ a[class] {
     flex-direction: column;
   }
 }
+.about__link svg {
+  width: clamp(12.5rem, 10.9068627451rem + 6.5359477124vw, 18.75rem);
+}
 
 .select {
   position: relative;
